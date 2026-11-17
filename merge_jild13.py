@@ -65,7 +65,7 @@ def combine_parts(result_id, parts):
         'title': first.get('title') or '',
         'volume_id': 56,
         'pages': sorted(set().union(*[set(p['pages']) for p in parts])),
-        'start_page': min(p['pages'] for p in parts),
+        'start_page': min(min(p['pages']) for p in parts),
         'tashreeh_sawal': first.get('tashreeh_sawal', '') or '',
         'tashreeh_jawab': ''.join((p.get('tashreeh_jawab', '') or '') for p in parts),
         'notes': [n for p in parts for n in (p.get('notes') or [])],
